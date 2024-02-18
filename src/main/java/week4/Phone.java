@@ -29,7 +29,7 @@ public abstract class Phone {
 
     public void call(String phoneNumber) {
         if (batteryLife >= 2) {
-            System.out.println("Calling " + phoneNumber);
+            callHistory.add(Integer.parseInt(phoneNumber));
             batteryLife -= 2;
         } else {
             System.out.println("Not enough battery to make this phone call");
@@ -42,7 +42,6 @@ public abstract class Phone {
         } else if (batteryLife >= 1) {
             messageHistory.computeIfAbsent(phoneNumber, k -> new ArrayList<>());
             messageHistory.get(phoneNumber).add(message);
-            System.out.println("Message sent...");
             batteryLife--;
         } else if (batteryLife == 0) {
             System.out.println("Not enough battery to send this message");
