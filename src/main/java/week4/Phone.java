@@ -12,6 +12,13 @@ public abstract class Phone {
     protected List<Contact> contacts = new ArrayList<>();
     protected int batteryLife;
 
+    public Phone() {
+    }
+
+    public Phone(int batteryLife) {
+        this.batteryLife = batteryLife;
+    }
+
     public void addContact(String contactNumber, String phoneNumber, String firstName, String lastName) {
         contacts.add(new Contact(contactNumber, phoneNumber, firstName, lastName));
     }
@@ -21,20 +28,21 @@ public abstract class Phone {
     }
 
     public void call(String phoneNumber) {
-        if (batteryLife > 2) {
+        if (batteryLife >= 2) {
             System.out.println("Calling " + phoneNumber);
             batteryLife -= 2;
         } else {
-            System.out.println("Not enough battery to send this message");
+            System.out.println("Not enough battery to make this phone call");
         }
     }
 
     public void sendMessage(String phoneNumber, String message) {
         if (message.length() > 500) {
             throw new IllegalArgumentException("Character limit exceeded. Message must not be longer than 500 characters.");
-        } else if (batteryLife > 1) {
+        } else if (batteryLife >= 1) {
             messageHistory.computeIfAbsent(phoneNumber, k -> new ArrayList<>());
             messageHistory.get(phoneNumber).add(message);
+            System.out.println("Message sent...");
             batteryLife--;
         } else if (batteryLife == 0) {
             System.out.println("Not enough battery to send this message");
