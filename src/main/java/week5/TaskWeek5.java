@@ -41,7 +41,8 @@ public class TaskWeek5 {
 
         for (Person p : personHobbies.keySet()) {
             System.out.println(p + ", hobbies: ");
-            personHobbies.get(p).forEach(System.out::println);
+            personHobbies.get(p)
+                    .forEach(System.out::println);
         }
     }
 }
