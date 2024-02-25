@@ -16,6 +16,6 @@ public class Hobby {
 
     @Override
     public String toString() {
-        return "Hobby: " + name;
+        return name + ", available locations -> " + addresses;
     }
 }
