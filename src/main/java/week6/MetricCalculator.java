@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MetricCalculator {
 
-    public void calculateExpression(String output, String expression) {
+    public String calculateExpression(String output, String expression) {
         if (expression.contains("*") || expression.contains("/") || expression.contains("^")) {
             throw new IllegalArgumentException("Only ADDITION and SUBTRACTION operations are allowed");
         }
@@ -18,7 +18,9 @@ public class MetricCalculator {
                 .toList();
         String[] operations = getOperationsArray(expression);
 
-        System.out.println(calculateDistance(values, operations) + " " + output);
+        String result = calculateDistance(values, operations) + " " + output;
+        System.out.println(result);
+        return result;
     }
 
     public Double convertUnit(MetricUnit unit, String outputUnit) {
