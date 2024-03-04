@@ -32,7 +32,7 @@ class MetricCalculatorTest {
 
         String expectedResult = "1090.0 mm";
 
-        assertEquals(calculator.calculateExpression(unit, expression), expectedResult);
+        assertEquals(expectedResult, calculator.calculateExpression(unit, expression));
     }
 
     @Test
