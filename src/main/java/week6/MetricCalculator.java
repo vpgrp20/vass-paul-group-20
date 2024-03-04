@@ -23,7 +23,7 @@ public class MetricCalculator {
         return result;
     }
 
-    public Double convertUnit(MetricUnit unit, String outputUnit) {
+    private Double convertUnit(MetricUnit unit, String outputUnit) {
         return switch (outputUnit) {
             case "mm" -> unit.toMm();
             case "cm" -> unit.toCm();
@@ -34,7 +34,7 @@ public class MetricCalculator {
         };
     }
 
-    public List<MetricUnit> getList(String[] parts) {
+    private List<MetricUnit> getList(String[] parts) {
         List<MetricUnit> unitList = new ArrayList<>();
         for (String part : parts) {
             unitList.add(new MetricUnit(part.trim()));
@@ -42,7 +42,7 @@ public class MetricCalculator {
         return unitList;
     }
 
-    public String[] getOperationsArray(String expression) {
+    private String[] getOperationsArray(String expression) {
         List<String> operations = new ArrayList<>();
         for (int i = 0; i < expression.length(); i++) {
             String s = String.valueOf(expression.charAt(i));
@@ -56,7 +56,7 @@ public class MetricCalculator {
         return result;
     }
 
-    public double calculateDistance(List<Double> values, String[] operations) {
+    private double calculateDistance(List<Double> values, String[] operations) {
         double result = values.get(0);
         for (int i = 0; i < operations.length; i++) {
             if (operations[i].equals("+")) {
