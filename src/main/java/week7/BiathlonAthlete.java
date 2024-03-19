@@ -58,11 +58,11 @@ public class BiathlonAthlete {
         addedSeconds = calculateAddedSeconds();
 
         int totalSeconds = addedSeconds + resultSeconds;
-        int addedMinutes = totalSeconds / 60;
-        int addedSeconds = totalSeconds % 60;
+        int totalAddedMinutes = totalSeconds / 60;
+        int finalSeconds = totalSeconds % 60;
 
-        finalResultMinutes += addedMinutes;
-        finalResultSeconds = addedSeconds;
+        finalResultMinutes += totalAddedMinutes;
+        finalResultSeconds = finalSeconds;
     }
 
     @Override
