@@ -48,6 +48,7 @@ public class BiathlonResultCalculator {
     }
 
     public void printResults() {
+        calculateResults();
         System.out.println("Winner - " + athletes.get(0));
         System.out.println("Runner-up - " + athletes.get(1));
         System.out.println("Third place - " + athletes.get(2));
