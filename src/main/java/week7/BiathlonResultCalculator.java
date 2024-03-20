@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class BiathlonResultCalculator {
@@ -26,7 +27,7 @@ public class BiathlonResultCalculator {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
+        sortAthletes();
     }
 
     private void parseLine(String line) {
@@ -47,6 +48,16 @@ public class BiathlonResultCalculator {
     }
 
     public void printResults() {
-        athletes.forEach(System.out::println);
+        System.out.println("Winner - " + athletes.get(0));
+        System.out.println("Runner-up - " + athletes.get(1));
+        System.out.println("Third place - " + athletes.get(2));
+    }
+
+    private void sortAthletes() {
+        final Comparator<BiathlonAthlete> athleteComparator = Comparator
+                .comparing(BiathlonAthlete::getFinalResultMinutes)
+                .thenComparing(BiathlonAthlete::getFinalResultSeconds);
+
+        athletes.sort(athleteComparator);
     }
 }
