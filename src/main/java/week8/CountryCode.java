@@ -1,4 +1,4 @@
-package week7;
+package week8;
 
 public enum CountryCode {
     SK, UK, CZ;
