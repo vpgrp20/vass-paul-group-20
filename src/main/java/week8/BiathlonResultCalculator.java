@@ -62,8 +62,6 @@ public class BiathlonResultCalculator {
         athletes.sort(athleteComparator);
     }
 
-    // TODO: 3/23/2024 -> public List<BiathlonAthlete> getAthletes() method to test CSV parsing
-
     public List<BiathlonAthlete> getAthletes() {
         return this.athletes;
     }
