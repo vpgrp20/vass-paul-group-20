@@ -7,11 +7,6 @@ public class BiathlonAthlete {
     private final CountryCode countryCode;
     private final int resultMinutes;
     private final int resultSeconds;
-
-    public String getAthleteName() {
-        return athleteName;
-    }
-
     private final String firstShooting;
     private final String secondShooting;
     private final String thirdShooting;
@@ -34,6 +29,10 @@ public class BiathlonAthlete {
         finalResultSeconds = resultSeconds;
 
         calculateFinalTime();
+    }
+
+    public String getAthleteName() {
+        return athleteName;
     }
 
     public int getFinalResultMinutes() {
