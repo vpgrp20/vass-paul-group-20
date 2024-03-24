@@ -29,7 +29,6 @@ class BiathlonResultCalculatorTest {
     @Test
     void getAthletes_returnsCorrectAthleteNames() {
 
-
         String expectedFirst = "FirstName";
         String expectedSecond = "FourthName";
         String expectedThird = "ThirdName";
