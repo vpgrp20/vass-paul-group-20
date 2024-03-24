@@ -15,9 +15,10 @@ public class BiathlonResultCalculator {
 
     public BiathlonResultCalculator(Path path) {
         this.path = path;
+        calculateResults();
     }
 
-    public void calculateResults() {
+    private void calculateResults() {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
 
             String line;
@@ -48,7 +49,6 @@ public class BiathlonResultCalculator {
     }
 
     public void printResults() {
-        calculateResults();
         System.out.println("Winner - " + athletes.get(0));
         System.out.println("Runner-up - " + athletes.get(1));
         System.out.println("Third place - " + athletes.get(2));
@@ -60,5 +60,11 @@ public class BiathlonResultCalculator {
                 .thenComparing(BiathlonAthlete::getFinalResultSeconds);
 
         athletes.sort(athleteComparator);
+    }
+
+    // TODO: 3/23/2024 -> public List<BiathlonAthlete> getAthletes() method to test CSV parsing
+
+    public List<BiathlonAthlete> getAthletes() {
+        return this.athletes;
     }
 }
