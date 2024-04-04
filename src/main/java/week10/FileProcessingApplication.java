@@ -28,7 +28,7 @@ public class FileProcessingApplication {
                         try {
                             writer.write(user.getFirstName() + ", " + user.getLastName() + "\n");
                         } catch (IOException e) {
-                            throw new RuntimeException(e);
+                            System.out.println("Error: " + e.getMessage());
                         }
                     });
 
