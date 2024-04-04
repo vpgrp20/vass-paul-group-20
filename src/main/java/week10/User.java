@@ -30,4 +30,8 @@ public class User {
         return lastName;
     }
 
+    public LocalDate getDoB() {
+        return this.dob;
+    }
+
 }
