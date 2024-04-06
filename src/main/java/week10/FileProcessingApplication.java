@@ -1,9 +1,11 @@
 package week10;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
@@ -26,7 +28,7 @@ public class FileProcessingApplication {
                     .sorted(Comparator.comparing(User::getLastName).thenComparing(User::getFirstName))
                     .forEach(user -> {
                         try {
-                            writer.write(user.getFirstName() + ", " + user.getLastName() + "\n");
+                            writer.write(user.getFirstName() + "," + user.getLastName() + "\n");
                         } catch (IOException e) {
                             System.out.println("Error: " + e.getMessage());
                         }
@@ -36,6 +38,20 @@ public class FileProcessingApplication {
             System.out.println("Error: " + e.getMessage());
         }
     }
-    //todo
-    // ------
+
+    public List<String> getUserNames(String targetFile) {
+        Path filePath = Path.of(targetFile);
+        List<String> result = new ArrayList<>();
+
+        try (BufferedReader reader = Files.newBufferedReader(filePath)) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                result.add(parts[1]);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
 }
